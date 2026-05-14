@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Sync | AI Collaboration Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <nav>
+        <div class="logo">
+            <i data-lucide="blocks"></i>
+            <span>NexusSync</span>
+        </div>
+        <div class="nav-links">
+            <a href="#dashboard" class="active">Dashboard</a>
+            <a href="#prompts">Prompts</a>
+            <a href="#tasks">Tareas</a>
+        </div>
+        <div class="user-profile">
+            <div class="status-indicator online"></div>
+            <span>Equipo AI</span>
+        </div>
+    </nav>
+
+    <main id="dashboard">
+        <header>
+            <h1>Bienvenido a la Central de Colaboración</h1>
+            <p>Sincroniza tus avances y los de tu IA en un solo lugar.</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <i data-lucide="git-branch"></i>
+                <h3>Sincronización</h3>
+                <p>Estado: Al día</p>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="message-square"></i>
+                <h3>AI Context</h3>
+                <p>Último reporte: Hace 5m</p>
+            </div>
+            <div class="stat-card">
+                <i data-lucide="zap"></i>
+                <h3>Prompts Compartidos</h3>
+                <p>Total: 12</p>
+            </div>
+        </section>
+
+        <section class="activity-feed">
+            <h2>Actividad Reciente</h2>
+            <div class="feed-container" id="feed">
+                <!-- Se llenará con JS -->
+                <div class="feed-item">
+                    <div class="icon-box"><i data-lucide="check-circle"></i></div>
+                    <div class="feed-content">
+                        <strong>Antigravity:</strong> He configurado el repositorio de Git y la estructura base.
+                        <span>Justo ahora</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nexus Sync - Potenciado por Antigravity</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
