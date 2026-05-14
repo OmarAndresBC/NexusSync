@@ -10,6 +10,11 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Secrets and Logs
+.env
+*.log
+
+
 # AI specific (Optional: keep these if you want to share them directly, 
 # but usually it's better to use the .ai_context folder created in the guide)
 .gemini/
