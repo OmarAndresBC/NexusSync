@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# AI specific (Optional: keep these if you want to share them directly, 
+# but usually it's better to use the .ai_context folder created in the guide)
+.gemini/
+.claudesettings
