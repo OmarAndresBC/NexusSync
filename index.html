@@ -19,9 +19,9 @@
             <span>NexusSync</span>
         </div>
         <div class="nav-links">
-            <a href="#dashboard" class="active">Dashboard</a>
-            <a href="#prompts">Prompts</a>
-            <a href="#tasks">Tareas</a>
+            <a href="#dashboard" class="active" onclick="showSection('dashboard')">Dashboard</a>
+            <a href="#prompts" onclick="showSection('prompts')">Prompts</a>
+            <a href="#tasks" onclick="showSection('tasks')">Tareas</a>
         </div>
         <div class="user-profile">
             <div class="status-indicator online"></div>
@@ -67,6 +67,35 @@
             </div>
         </section>
     </main>
+
+    <main id="prompts" style="display: none;">
+        <header>
+            <h1>Librería de Prompts</h1>
+            <p>Guarda y comparte los mejores comandos para potenciar tu IA.</p>
+        </header>
+
+        <section class="prompt-controls">
+            <input type="text" id="promptSearch" placeholder="Buscar prompts...">
+            <button class="btn-primary" onclick="openModal()">+ Nuevo Prompt</button>
+        </section>
+
+        <section class="prompts-grid" id="promptsGrid">
+            <!-- Se llenará con JS -->
+        </section>
+    </main>
+
+    <!-- Modal para Nuevo Prompt -->
+    <div id="promptModal" class="modal">
+        <div class="modal-content">
+            <h2>Añadir Nuevo Prompt</h2>
+            <input type="text" id="newPromptTitle" placeholder="Título del Prompt">
+            <textarea id="newPromptContent" placeholder="Escribe el prompt aquí..."></textarea>
+            <div class="modal-actions">
+                <button onclick="closeModal()">Cancelar</button>
+                <button class="btn-primary" onclick="savePrompt()">Guardar</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Nexus Sync - Potenciado por Antigravity</p>

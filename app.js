@@ -2,8 +2,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Nexus Sync cargado correctamente.');
+    loadFeed();
+    loadPrompts();
+});
+
+function showSection(sectionId) {
+    // Ocultar todos los main
+    document.querySelectorAll('main').forEach(m => m.style.display = 'none');
+    // Quitar active de los links
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
     
-    // Simulación de carga de actividad (esto se podría conectar a un backend)
+    // Mostrar el seleccionado
+    document.getElementById(sectionId).style.display = 'block';
+    // Poner active al link correspondiente
+    event.target.classList.add('active');
+}
+
+function loadFeed() {
     const activities = [
         { user: 'Tu Compañero', text: 'Ha subido una nueva especificación de API.', time: 'Hace 2 horas', icon: 'file-text' },
         { user: 'Claude (IA)', text: 'He optimizado las consultas a la base de datos.', time: 'Hace 3 horas', icon: 'cpu' },
@@ -11,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const feed = document.getElementById('feed');
+    feed.innerHTML = ''; // Limpiar
 
     activities.forEach(item => {
         const div = document.createElement('div');
@@ -24,9 +40,56 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         feed.appendChild(div);
     });
+    if (window.lucide) window.lucide.createIcons();
+}
 
-    // Re-ejecutar Lucide para los nuevos iconos
-    if (window.lucide) {
-        window.lucide.createIcons();
+// Lógica de Prompts
+let prompts = [
+    { title: 'Generador de Unit Tests', content: 'Actúa como un experto en testing y genera pruebas para el siguiente código...' },
+    { title: 'Refactorización Clean Code', content: 'Revisa este código y aplica principios SOLID y Clean Code...' }
+];
+
+function loadPrompts() {
+    const grid = document.getElementById('promptsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    prompts.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        card.innerHTML = `
+            <h3>${p.title}</h3>
+            <p>"${p.content.substring(0, 80)}..."</p>
+            <button class="btn-primary" onclick="copyPrompt('${p.content}')">Copiar Prompt</button>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function openModal() {
+    document.getElementById('promptModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('promptModal').style.display = 'none';
+}
+
+function savePrompt() {
+    const title = document.getElementById('newPromptTitle').value;
+    const content = document.getElementById('newPromptContent').value;
+
+    if (title && content) {
+        prompts.push({ title, content });
+        loadPrompts();
+        closeModal();
+        // Limpiar campos
+        document.getElementById('newPromptTitle').value = '';
+        document.getElementById('newPromptContent').value = '';
     }
-});
+}
+
+function copyPrompt(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Prompt copiado al portapapeles');
+    });
+}
